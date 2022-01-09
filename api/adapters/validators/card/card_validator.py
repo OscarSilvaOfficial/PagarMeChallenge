@@ -18,7 +18,7 @@ class CardValidator(CardValidatorInterface):
     
   def validate_expire_date(self):
     day, month, year = self.card.expire_date.split('/')
-    expire_date = datetime(year, month, day)
+    expire_date = datetime(int(year), int(month), int(day))
     if expire_date < datetime.now():
       raise Exception('Invalid expire date')
     
