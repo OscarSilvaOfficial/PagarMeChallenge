@@ -7,8 +7,8 @@ class Accout(AccountInterface):
     self._document = document
     self._user_name = user_name
     self._balance = balance
-    self.__validator = validator(document)
-    self.__validator.validate()
+    self.validator = validator(document)
+    self.validator.validate()
 
   @property
   def document(self):
