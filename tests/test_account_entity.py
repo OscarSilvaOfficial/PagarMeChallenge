@@ -5,17 +5,17 @@ def test_valid_document():
   account = Accout(
     document='12345678901', 
     user_name='user', 
-    value=100.0,
+    balance=100.0,
     validator=DocumentValidator
   )
-  assert account.document == '12345678901' and account.user_name == 'user' and account.value == 100.0
+  assert account.document == '12345678901' and account.user_name == 'user' and account.balance == 100.0
   
 def test_with_no_document():
   try:
     Accout(
       document=None, 
       user_name='user', 
-      value=100.0,
+      balance=100.0,
       validator=DocumentValidator
     )
   except ValueError as error:
@@ -26,7 +26,7 @@ def test_long_document():
     Accout(
       document='123456789011', 
       user_name='user', 
-      value=100.0,
+      balance=100.0,
       validator=DocumentValidator
     )
   except ValueError as error:
@@ -37,7 +37,7 @@ def test_no_only_digits_document():
     Accout(
       document='1234567890a', 
       user_name='user', 
-      value=100.0,
+      balance=100.0,
       validator=DocumentValidator
     )
   except ValueError as error:
