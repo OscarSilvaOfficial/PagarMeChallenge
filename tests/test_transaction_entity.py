@@ -1,8 +1,8 @@
 from api.entities.account import Accout
 from api.entities.transaction import Transaction
-from api.adapters.validators.document.document_validator import DocumentValidator
-from api.adapters.validators.card.debit_card_validator import DebitCardValidator
-from api.adapters.validators.card.credit_card_validator import CreditCardValidator
+from api.entities.validators.document.document_validator import DocumentValidator
+from api.entities.validators.card.debit_card_validator import DebitCardValidator
+from api.entities.validators.card.credit_card_validator import CreditCardValidator
 from api.entities.debit_card import DebitCard
 from api.entities.credit_card import CreditCard
 

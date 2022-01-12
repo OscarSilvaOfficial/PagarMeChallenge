@@ -1,10 +1,11 @@
 from api.entities.interfaces.credit_card_interface import CreditCardInterface
+from api.entities.validators.card.interfaces.card_validator_interface import CardValidatorInterface
 from .card import Card 
 
 
 class CreditCard(Card, CreditCardInterface):
   
-  def __init__(self, number, client_name, expire_date, cvv, validator, credit_limit):
+  def __init__(self, number: int, client_name: str, expire_date: str, cvv: int, validator: CardValidatorInterface, credit_limit):
     super().__init__(number, client_name, expire_date, cvv, 'credit_card', validator)
     self._credit_limit = credit_limit
     

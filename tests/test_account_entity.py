@@ -1,5 +1,5 @@
 from api.entities.account import Accout
-from api.adapters.validators.document.document_validator import DocumentValidator
+from api.entities.validators.document.document_validator import DocumentValidator
 
 def test_valid_document():
   account = Accout(

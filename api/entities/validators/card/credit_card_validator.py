@@ -1,4 +1,4 @@
-from api.adapters.validators.card.card_validator import CardValidator
+from api.entities.validators.card.card_validator import CardValidator
 from api.entities.interfaces.card_interface import CardInterface
 
 

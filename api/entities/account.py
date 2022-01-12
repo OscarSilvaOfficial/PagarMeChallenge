@@ -1,4 +1,4 @@
-from api.adapters.validators.document.interfaces.document_validator_interface import DocumentValidationInterface
+from api.entities.validators.document.interfaces.document_validator_interface import DocumentValidationInterface
 from api.entities.interfaces.account_interface import AccountInterface
 
 class Accout(AccountInterface):
