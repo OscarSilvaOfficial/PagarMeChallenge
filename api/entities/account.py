@@ -1,7 +1,7 @@
 from api.entities.validators.document.interfaces.document_validator_interface import DocumentValidationInterface
 from api.entities.interfaces.account_interface import AccountInterface
 
-class Accout(AccountInterface):
+class Account(AccountInterface):
   
   def __init__(self, document: str, user_name: str, balance: float, validator: DocumentValidationInterface):
     self._document = document

@@ -1,4 +1,4 @@
-from api.entities.account import Accout
+from api.entities.account import Account
 from api.entities.transaction import Transaction
 from api.entities.validators.document.document_validator import DocumentValidator
 from api.entities.validators.card.debit_card_validator import DebitCardValidator
@@ -8,8 +8,8 @@ from api.entities.credit_card import CreditCard
 
 
 def test_transaction_with_debit_card():
-  from_account = Accout('07267865941', 'Oscar da Silva', 1000, DocumentValidator)
-  to_account = Accout('07267865942', 'Oscar da Silvio', 1000, DocumentValidator)
+  from_account = Account('07267865941', 'Oscar da Silva', 1000, DocumentValidator)
+  to_account = Account('07267865942', 'Oscar da Silvio', 1000, DocumentValidator)
   
   card = DebitCard(
     client_name='Oscar da Silva',
@@ -31,7 +31,7 @@ def test_transaction_with_debit_card():
     
     
 def test_transaction_with_credit_card():
-  to_account = Accout('07267865942', 'Oscar da Silvio', 1000, DocumentValidator)
+  to_account = Account('07267865942', 'Oscar da Silvio', 1000, DocumentValidator)
   
   card = CreditCard(
     client_name='Oscar da Silva',

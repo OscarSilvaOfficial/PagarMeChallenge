@@ -1,8 +1,8 @@
-from api.entities.account import Accout
+from api.entities.account import Account
 from api.entities.validators.document.document_validator import DocumentValidator
 
 def test_valid_document():
-  account = Accout(
+  account = Account(
     document='12345678901', 
     user_name='user', 
     balance=100.0,
@@ -12,7 +12,7 @@ def test_valid_document():
   
 def test_with_no_document():
   try:
-    Accout(
+    Account(
       document=None, 
       user_name='user', 
       balance=100.0,
@@ -23,7 +23,7 @@ def test_with_no_document():
     
 def test_long_document():
   try:
-    Accout(
+    Account(
       document='123456789011', 
       user_name='user', 
       balance=100.0,
@@ -34,7 +34,7 @@ def test_long_document():
     
 def test_no_only_digits_document():
   try:
-    Accout(
+    Account(
       document='1234567890a', 
       user_name='user', 
       balance=100.0,
