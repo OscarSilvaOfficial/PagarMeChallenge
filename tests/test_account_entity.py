@@ -1,4 +1,4 @@
-from api.entities.account import Account
+from api.entities.account.account import Account
 from api.entities.validators.document.document_validator import DocumentValidator
 
 def test_valid_document():

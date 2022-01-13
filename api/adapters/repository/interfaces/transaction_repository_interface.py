@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from api.entities.transaction import Transaction
+from api.entities.transaction.transaction import Transaction
 
 
 class TransactionRepositoryInterface(ABC):

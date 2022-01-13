@@ -1,5 +1,5 @@
 from api.entities.validators.card.interfaces.card_validator_interface import CardValidatorInterface
-from .interfaces.card_interface import CardInterface
+from ..interfaces.card_interface import CardInterface
 
 
 class Card(CardInterface):
