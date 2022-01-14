@@ -5,7 +5,7 @@ from api.entities.transaction.transaction import Transaction
 from api.useCases.interfaces.debit_transaction_use_case import DebitTransactionUseCaseInterface
 
 
-class DebitTransaction(DebitTransactionUseCaseInterface):
+class DebitTransactionUseCase(DebitTransactionUseCaseInterface):
   
   def __init__(
     self, 
