@@ -1,7 +1,7 @@
 from api.adapters.repository.base_repository import Repository
 from api.adapters.repository.interfaces.card_repository_interface import CardRepositoryInterface
 from api.infra.db.interfaces.sql_interface import DatabaseInterface
-from api.entities.card.card import DebitCard
+from api.entities.card.debit_card import DebitCard
 
 
 class DebitCardRepository(CardRepositoryInterface, Repository):
