@@ -1,43 +1,27 @@
-# from sqlmodel.main import SQLModel
 from .interfaces.sql_interface import DatabaseInterface
-from sqlmodel import  Session, create_engine, select, SQLModel
-
+from fast_sql_manager.implementations.sqlite import SQLiteRepository
 
 class SQLite(DatabaseInterface):
   
-  def __init__(self, entity):
+  def __init__(self, entity, db_name):
+    self._db = SQLiteRepository(db_path=db_name)
     self._entity = entity
-    self._session = self._session_start()
-    SQLModel.metadata.create_all(self._session)
-    
-  def _session_start(self):
-    return create_engine("sqlite:///database.db")
-    
+
   def all(self):
-    with Session(self._session) as session:
-      statement = select(self._entity)
-      return session.exec(statement).fetchall()
+    return self._db.select_all(table_name=self._entity.__name__)
   
   def get(self, id: int):
-    with Session(self._session) as session:
-      statement = select(self._entity).where(self._entity.id == id)
-      return session.exec(statement).first()
+    return self._db.select_all(where={ 'id': id })
   
   def create(self, entity):
-    with Session(self._session) as session:
-      session.add(entity)
-      session.commit()
-      return entity
+    return self._db.insert(
+      table_name=self._entity.__name__,
+      insert_values=entity.__dict__,
+      table_columns=self._entity.__dict__
+    )
   
   def update(self, id: int, entity):
-    with Session(self._session) as session:
-      updated_entity = self.get(id)(**entity)
-      session.add(updated_entity)
-      session.commit()
-      return updated_entity
+    pass
     
   def delete(self, id: int):
-     with Session(self._session) as session:
-       entity = session.delete(self.get(id))
-       session.delete(entity)
-       return {'message': 'Deleted'}
+    pass
