@@ -7,7 +7,7 @@ from api.entities.card.debit_card import DebitCard
 class DebitCardRepository(CardRepositoryInterface, Repository):
   
   def __init__(self, db: DatabaseInterface) -> None:
-      super().__init__(db=db, entity=DebitCard)
+      super().__init__(db=db)
   
   def get_cards(self):
     return self.db.all()

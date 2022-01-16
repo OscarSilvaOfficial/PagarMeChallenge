@@ -1,9 +1,9 @@
 from api.entities.interfaces.account_interface import AccountInterface
 from api.entities.interfaces.card_interface import CardInterface
-from .transaction import Transaction
+from .transaction import Transactions
 
 
-class DebitTransaction(Transaction):
+class DebitTransactions(Transactions):
   
   def __init__(
     self, 

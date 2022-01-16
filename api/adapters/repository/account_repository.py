@@ -7,7 +7,7 @@ from api.entities.account.account import Account
 class AccountRepository(AccountRepositoryInterface, Repository):
   
   def __init__(self, db: DatabaseInterface) -> None:
-      super().__init__(db=db, entity=Account)
+      super().__init__(db=db)
   
   def get_accounts(self):
     return self.db.all()

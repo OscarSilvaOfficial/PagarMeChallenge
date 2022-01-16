@@ -3,7 +3,7 @@ from api.entities.interfaces.card_interface import CardInterface
 from api.entities.interfaces.credit_card_interface import CreditCardInterface
 
 
-class Transaction:
+class Transactions:
   
   def __init__(
     self, 

@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
 
-class DebitTransactionUseCaseInterface(ABC):
+class DebitTransactionsUseCaseInterface(ABC):
   
   @abstractmethod
   def get_transaction(self, transaction_id: int):

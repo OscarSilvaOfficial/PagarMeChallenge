@@ -1,15 +1,15 @@
 from api.adapters.repository.interfaces.account_repository_interface import AccountRepositoryInterface
 from api.adapters.repository.interfaces.card_repository_interface import CardRepositoryInterface
-from api.adapters.repository.interfaces.transaction_repository_interface import TransactionRepositoryInterface
-from api.entities.transaction.transaction import Transaction
-from api.useCases.interfaces.debit_transaction_use_case import DebitTransactionUseCaseInterface
+from api.adapters.repository.interfaces.transaction_repository_interface import TransactionsRepositoryInterface
+from api.entities.transaction.transaction import Transactions
+from api.useCases.interfaces.debit_transaction_use_case import DebitTransactionsUseCaseInterface
 
 
-class DebitTransactionUseCase(DebitTransactionUseCaseInterface):
+class DebitTransactionsUseCase(DebitTransactionsUseCaseInterface):
   
   def __init__(
     self, 
-    transaction_repository: TransactionRepositoryInterface, 
+    transaction_repository: TransactionsRepositoryInterface, 
     account_repository: AccountRepositoryInterface,
     debit_card_repository: CardRepositoryInterface
   ):
@@ -28,7 +28,7 @@ class DebitTransactionUseCase(DebitTransactionUseCaseInterface):
     to_account = self._account_repository.get_account(document=to_document)
     card = self._debit_card_repository.get_card(number=card_number, cvv=cvv)
 
-    transaction = Transaction(
+    transaction = Transactions(
       description='Debit transaction',
       card=card,
       from_account=from_account,

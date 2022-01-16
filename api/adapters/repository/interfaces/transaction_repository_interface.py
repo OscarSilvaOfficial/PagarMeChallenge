@@ -1,8 +1,8 @@
 from abc import ABC, abstractmethod
-from api.entities.transaction.transaction import Transaction
+from api.entities.transaction.transaction import Transactions
 
 
-class TransactionRepositoryInterface(ABC):
+class TransactionsRepositoryInterface(ABC):
 
   @abstractmethod
   def get_transactions(self):
@@ -13,5 +13,5 @@ class TransactionRepositoryInterface(ABC):
     pass
 
   @abstractmethod
-  def create_transaction(self, transaction: Transaction):
+  def create_transaction(self, transaction: Transactions):
     pass
