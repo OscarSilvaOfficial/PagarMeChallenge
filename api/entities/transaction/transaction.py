@@ -7,15 +7,21 @@ class Transactions:
   
   def __init__(
     self, 
+    value: float,
     description: str,
     from_account: AccountInterface, 
     to_account: AccountInterface, 
     card: CardInterface
   ):
+    self._value = value
     self._description = description
     self._from_account = from_account
     self._to_account = to_account
     self._card = card
+    
+  @property
+  def value(self):
+    return self._value
   
   @property
   def description(self):

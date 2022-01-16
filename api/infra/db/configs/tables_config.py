@@ -3,6 +3,7 @@ tables = [
     'name': 'Account',
     'columns': {
       'id': 'INTEGER PRIMARY KEY AUTOINCREMENT',
+      'document': 'TEXT',
       'user_name': 'TEXT', 
       'balance': 'REAL'
     }
@@ -25,7 +26,8 @@ tables = [
       'description': 'TEXT',
       'from_account': 'INTEGER',
       'to_account': 'INTEGER',
-      'card': 'INTEGER'
+      'card': 'INTEGER',
+      'value': 'REAL'
     }
   }
 ]

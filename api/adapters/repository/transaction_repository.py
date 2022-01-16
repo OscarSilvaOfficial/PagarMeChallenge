@@ -15,5 +15,5 @@ class TransactionsRepository(TransactionsRepositoryInterface, Repository):
   def get_transaction(self, id: int):
     return self.db.get(id)
     
-  def create_transaction(self, debit_transaction: DebitTransactions):
-    return self.db.create(debit_transaction)
+  def create_transaction(self, transaction: DebitTransactions):
+    return self.db.create(transaction)

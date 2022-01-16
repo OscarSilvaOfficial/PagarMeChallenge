@@ -13,7 +13,7 @@ class AccountRepository(AccountRepositoryInterface, Repository):
     return self.db.all()
     
   def get_account(self, document: int):
-    return self.db.get(document)
+    return self.db.get(field={'document': document})
     
   def create_account(self, account: Account):
     return self.db.create(account)

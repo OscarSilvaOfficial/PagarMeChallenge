@@ -13,7 +13,7 @@ class DebitCardRepository(CardRepositoryInterface, Repository):
     return self.db.all()
     
   def get_card(self, number: int):
-    return self.db.get(number)
+    return self.db.get(field={'number': number})
     
   def create_card(self, debit_card: DebitCard):
     return self.db.create(debit_card)
