@@ -5,4 +5,4 @@ from api.infra.entrypoint.run import app
 client = TestClient(app)
 
 def test_index():
-  print(client.get('/'))
+  assert client.get('/').json() == {'message': 'Hello World'}

@@ -57,5 +57,5 @@ def test_transaction():
     value=100
   )
   
-  print(transaction.get_transactions())
+  assert len(transaction.get_transactions()) > 0
   
