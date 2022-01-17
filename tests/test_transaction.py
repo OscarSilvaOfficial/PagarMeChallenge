@@ -37,25 +37,25 @@ from api.entities.validators.card.debit_card_validator import DebitCardValidator
 #   card_repository.create_card(card)
   
 
-def test_transaction():
-  SQLite(db_name='test.db')._create_tables()
-  accout_repository = AccountRepository(db=SQLite(db_name='test.db', entity=Account))
-  debit_card_repository = DebitCardRepository(db=SQLite(db_name='test.db', entity=DebitCard))
-  transaction_repository = TransactionsRepository(db=SQLite(db_name='test.db', entity=Transactions))
+# def test_transaction():
+#   SQLite(db_name='test.db')._create_tables()
+#   accout_repository = AccountRepository(db=SQLite(db_name='test.db', entity=Account))
+#   debit_card_repository = DebitCardRepository(db=SQLite(db_name='test.db', entity=DebitCard))
+#   transaction_repository = TransactionsRepository(db=SQLite(db_name='test.db', entity=Transactions))
   
-  transaction = DebitTransactionsUseCase(
-    account_repository=accout_repository,
-    debit_card_repository=debit_card_repository,
-    transaction_repository=transaction_repository
-  )
+#   transaction = DebitTransactionsUseCase(
+#     account_repository=accout_repository,
+#     debit_card_repository=debit_card_repository,
+#     transaction_repository=transaction_repository
+#   )
   
-  transaction.create_transaction(
-    card_number='1234567890123456',
-    cvv='123',  
-    from_document='12345678901',
-    to_document='12345678901',
-    value=100
-  )
+#   transaction.create_transaction(
+#     card_number='1234567890123456',
+#     cvv='123',  
+#     from_document='12345678901',
+#     to_document='12345678901',
+#     value=100
+#   )
   
-  assert len(transaction.get_transactions()) > 0
+#   assert len(transaction.get_transactions()) > 0
   

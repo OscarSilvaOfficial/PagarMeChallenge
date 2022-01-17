@@ -69,7 +69,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
 [[package]]
 name = "fast-sql-manager"
-version = "1.2.3"
+version = "1.2.4"
 description = "Um pacote simples para realizar operações no banco"
 category = "main"
 optional = false
@@ -307,8 +307,8 @@ colorama = [
     {file = "colorama-0.4.4.tar.gz", hash = "sha256:5941b2b48a20143d2267e95b1c2a7603ce057ee39fd88e7329b0c292aa16869b"},
 ]
 fast-sql-manager = [
-    {file = "fast_sql_manager-1.2.3-py3-none-any.whl", hash = "sha256:d43026fcd7ad57f877bbec922a0ad33a95abaf72ac0448bd822c9bc0eb1ecc63"},
-    {file = "fast_sql_manager-1.2.3.tar.gz", hash = "sha256:61f6019f0e132d22c5b1688e4abc493fbc596ca63e1f057a91ca5d82fb98e26a"},
+    {file = "fast_sql_manager-1.2.4-py3-none-any.whl", hash = "sha256:1de4d7473b6a488c6db9c08662e40bf17016f87550affbfb32982e99427a087a"},
+    {file = "fast_sql_manager-1.2.4.tar.gz", hash = "sha256:db3872501959fad6833fe784c631bc86de4d5b405be428b85e4206ef21fcdb56"},
 ]
 fastapi = [
     {file = "fastapi-0.71.0-py3-none-any.whl", hash = "sha256:a78eca6b084de9667f2d5f37e2ae297270e5a119cd01c2f04815795da92fc87f"},

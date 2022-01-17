@@ -23,7 +23,7 @@ class SQLite(DatabaseInterface):
   def _get_values(self, entity):
     response = []
     for value in entity.values():
-      if type(value) == int or type(value) == str :
+      if type(value) == int or type(value) == str or type(value) == float:
         response.append(value)
     return tuple(response)
 
@@ -44,7 +44,7 @@ class SQLite(DatabaseInterface):
     table_name = str(entity.__class__.__name__)
     insert_keys = list(self._get_keys(entity_dict))
     insert_values = tuple(self._get_values(entity_dict))
-    
+        
     return self._db.insert(
       table_name=table_name,
       insert_values=insert_values,
