@@ -68,6 +68,22 @@ optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
 [[package]]
+name = "dnspython"
+version = "2.2.0"
+description = "DNS toolkit"
+category = "main"
+optional = false
+python-versions = ">=3.6,<4.0"
+
+[package.extras]
+dnssec = ["cryptography (>=2.6,<37.0)"]
+curio = ["curio (>=1.2,<2.0)", "sniffio (>=1.1,<2.0)"]
+doh = ["h2 (>=4.1.0)", "httpx (>=0.21.1)", "requests (>=2.23.0,<3.0.0)", "requests-toolbelt (>=0.9.1,<0.10.0)"]
+idna = ["idna (>=2.1,<4.0)"]
+trio = ["trio (>=0.14,<0.20)"]
+wmi = ["wmi (>=1.5.1,<2.0.0)"]
+
+[[package]]
 name = "fast-nosql-manager"
 version = "0.2.2"
 description = "Um pacote simples para realizar operações no mongoDB"
@@ -209,6 +225,9 @@ category = "main"
 optional = false
 python-versions = ">=3.6"
 
+[package.dependencies]
+dnspython = {version = ">=1.16.0,<3.0.0", optional = true, markers = "extra == \"srv\""}
+
 [package.extras]
 aws = ["pymongo-auth-aws (<2.0.0)"]
 encryption = ["pymongocrypt (>=1.2.0,<2.0.0)"]
@@ -307,7 +326,7 @@ standard = ["websockets (>=10.0)", "httptools (>=0.2.0,<0.4.0)", "watchgod (>=0.
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "3c8f5834c7026da7a279cfa225277e8f4ce9fefadb33d378b9477fa6dd3c9078"
+content-hash = "c84f576c12468982110d6c52e15bd54a02fe76df5e35a13d5a0256f00b125cf7"
 
 [metadata.files]
 anyio = [
@@ -333,6 +352,10 @@ click = [
 colorama = [
     {file = "colorama-0.4.4-py2.py3-none-any.whl", hash = "sha256:9f47eda37229f68eee03b24b9748937c7dc3868f906e8ba69fbcbdd3bc5dc3e2"},
     {file = "colorama-0.4.4.tar.gz", hash = "sha256:5941b2b48a20143d2267e95b1c2a7603ce057ee39fd88e7329b0c292aa16869b"},
+]
+dnspython = [
+    {file = "dnspython-2.2.0-py3-none-any.whl", hash = "sha256:081649da27ced5e75709a1ee542136eaba9842a0fe4c03da4fb0a3d3ed1f3c44"},
+    {file = "dnspython-2.2.0.tar.gz", hash = "sha256:e79351e032d0b606b98d38a4b0e6e2275b31a5b85c873e587cc11b73aca026d6"},
 ]
 fast-nosql-manager = [
     {file = "fast_nosql_manager-0.2.2-py3-none-any.whl", hash = "sha256:2c934c803f9241c83df8a6a6eb1df68d8cb870fbe353aec8d5af1c519c1dcdd3"},
