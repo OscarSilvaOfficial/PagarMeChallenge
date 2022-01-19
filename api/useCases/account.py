@@ -18,6 +18,6 @@ class AccountUseCase(AccountUseCaseInterface):
 
   def create_account(self, document: str, user_name: str, balance: float):
     account = Account(balance=balance, document=document, user_name=user_name)
-    return self._account_repository.create_account(account)
+    return self._account_repository.create_account(accounts=account.to_dict())
 
       

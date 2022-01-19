@@ -1,4 +1,3 @@
-from dataclasses import replace
 from .interfaces.sql_interface import DatabaseInterface
 from fast_sql_manager.implementations.sqlite import SQLiteRepository
 from api.infra.db.configs.tables_config import tables

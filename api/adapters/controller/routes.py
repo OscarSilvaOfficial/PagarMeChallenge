@@ -1,4 +1,3 @@
-from api.entities.account.account import Account
 from api.infra.db.interfaces.sql_interface import DatabaseInterface
 from api.infra.http.interfaces.http_api_interface import HttpApiInterface
 from api.adapters.repository.account_repository import AccountRepository

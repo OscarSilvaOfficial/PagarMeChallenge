@@ -18,6 +18,13 @@ class Account(AccountInterface):
     self._balance = balance
     validator(document).validate()
     
+  def to_dict(self):
+    return {
+      'document': self._document,
+      'user_name': self._user_name,
+      'balance': self._balance
+    }
+    
   @property
   def id(self):
     return self._id

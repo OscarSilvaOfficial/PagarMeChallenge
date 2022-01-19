@@ -13,5 +13,5 @@ class AccountRepositoryInterface(ABC):
     pass
 
   @abstractmethod
-  def create_account(self, account: Account):
+  def create_account(self, accounts: Account):
     pass

@@ -1,14 +1,14 @@
 from fastapi.testclient import TestClient
-from api.infra.entrypoint.run import app
+from api.infra.entrypoint import app
 
 
 client = TestClient(app)
 
 def test_index():
-  assert client.get('/api').json() == {'message': 'Hello World'}
+  assert client.get('/').json() == {'message': 'Hello World'}
  
 def test_get_accounts():
-  assert client.get('/api/accounts').status_code == 200
+  assert client.get('/accounts').status_code == 200
   
 def test_create_account():
   accout = {
@@ -16,5 +16,5 @@ def test_create_account():
     "user_name": "teste",
     "balance": 1000.0
   }
-  request = client.post('/api/accounts/', json=accout)
+  request = client.post('/accounts/', json=accout)
   assert request.status_code == 201

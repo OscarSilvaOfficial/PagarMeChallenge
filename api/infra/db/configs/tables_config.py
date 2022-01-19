@@ -31,3 +31,5 @@ tables = [
     }
   }
 ]
+
+collections = ['transactions', 'accounts', 'debit_cards']
