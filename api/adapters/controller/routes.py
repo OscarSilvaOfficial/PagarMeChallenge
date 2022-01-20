@@ -1,34 +1,15 @@
-from api.infra.db.interfaces.sql_interface import DatabaseInterface
 from api.infra.http.interfaces.http_api_interface import HttpApiInterface
-from api.adapters.repository.account_repository import AccountRepository
-from api.useCases.account import AccountUseCase
-from .parser.account import AccountParser
+from api.adapters.controller.accounts.routes import account_routes
+from api.adapters.controller.main.routes import index_routes
+from api.infra.db.interfaces.sql_interface import DatabaseInterface
 from fastapi import Response
 
 
-
 def main_routes(router: HttpApiInterface, db: DatabaseInterface, response=Response):
-  
-  account_use_case = AccountUseCase(account_repository=AccountRepository(db=db))
-  
-  @router.get('/')
-  async def index():
-    return {'message': 'Hello World'}
-  
-  @router.get('/accounts/', response_model=list[AccountParser])
-  async def get_all_accounts():
-    return account_use_case.get_accounts()
-  
-  @router.post('/accounts/', status_code=201)
-  async def create_account(account: AccountParser, response: response):
-    try:
-      return account_use_case.create_account(
-        balance=account.balance, 
-        document=account.document, 
-        user_name=account.user_name
-      )
-    except Exception as e:
-      response.status_code = 409
-      return {'message': str(e)}
+
+  all_routers = [account_routes, index_routes]
+    
+  for route in all_routers:
+    route(router=router, db=db, response=response)
   
   return router
