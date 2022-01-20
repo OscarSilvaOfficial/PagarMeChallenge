@@ -11,7 +11,8 @@ class AccountRepository(AccountRepositoryInterface):
     return self.db.all(collection_name='accounts', where={})
     
   def get_account(self, document: int):
-    return self.db.get(collection_name='accounts', where={'document': document})
-    
+    result = self.db.all(collection_name='accounts', where={'document': document})
+    return None if not result else result[0]
+
   def create_account(self, accounts: dict or list[dict]):
     return self.db.create(documents=accounts, collection_name='accounts')

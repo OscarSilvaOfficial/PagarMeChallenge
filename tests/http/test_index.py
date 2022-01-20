@@ -18,3 +18,12 @@ def test_create_account():
   }
   request = client.post('/accounts/', json=accout)
   assert request.status_code == 201
+  
+def test_create_account_already_exists():
+  accout = {
+    "document": "12345678904",
+    "user_name": "teste",
+    "balance": 1000.0
+  }
+  request = client.post('/accounts/', json=accout)
+  assert request.status_code == 409
