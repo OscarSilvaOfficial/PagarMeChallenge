@@ -11,19 +11,19 @@ def test_get_accounts():
   assert client.get('/accounts').status_code == 200
   
 def test_create_account():
-  accout = {
+  account = {
     "document": "12345678904",
     "user_name": "teste",
     "balance": 1000.0
   }
-  request = client.post('/accounts/', json=accout)
+  request = client.post('/accounts/', json=account)
   assert request.status_code == 201
   
 def test_create_account_already_exists():
-  accout = {
+  account = {
     "document": "12345678904",
     "user_name": "teste",
     "balance": 1000.0
   }
-  request = client.post('/accounts/', json=accout)
+  request = client.post('/accounts/', json=account)
   assert request.status_code == 409

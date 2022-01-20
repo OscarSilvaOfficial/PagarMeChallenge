@@ -1,10 +1,8 @@
-from api.adapters.repository.base_repository import Repository
 from api.adapters.repository.interfaces.card_repository_interface import CardRepositoryInterface
 from api.infra.db.interfaces.sql_interface import DatabaseInterface
-from api.entities.card.debit_card import DebitCard
 
 
-class DebitCardRepository(CardRepositoryInterface, Repository):
+class DebitCardRepository(CardRepositoryInterface):
   
   def __init__(self, db: DatabaseInterface) -> None:
       super().__init__(db=db)
@@ -13,7 +11,7 @@ class DebitCardRepository(CardRepositoryInterface, Repository):
     return self.db.all()
     
   def get_card(self, number: int):
-    return self.db.get(field={'number': number})
+    return self.db.all(where={'number': number})
     
-  def create_card(self, debit_card: DebitCard):
+  def create_card(self, debit_card):
     return self.db.create(debit_card)

@@ -1,10 +1,8 @@
-from api.adapters.repository.base_repository import Repository
 from api.adapters.repository.interfaces.transaction_repository_interface import TransactionsRepositoryInterface
 from api.infra.db.interfaces.sql_interface import DatabaseInterface
-from api.entities.transaction.dabit_transaction import DebitTransactions
 
 
-class TransactionsRepository(TransactionsRepositoryInterface, Repository):
+class TransactionsRepository(TransactionsRepositoryInterface):
   
   def __init__(self, db: DatabaseInterface) -> None:
       super().__init__(db=db)
@@ -13,7 +11,7 @@ class TransactionsRepository(TransactionsRepositoryInterface, Repository):
     return self.db.all()
     
   def get_transaction(self, id: int):
-    return self.db.get(id)
+    return self.db.get(where={ 'id': id })
     
-  def create_transaction(self, transaction: DebitTransactions):
+  def create_transaction(self, transaction):
     return self.db.create(transaction)

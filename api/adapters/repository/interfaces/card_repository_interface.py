@@ -9,7 +9,7 @@ class CardRepositoryInterface(ABC):
     pass
 
   @abstractmethod
-  def get_card(self, number: int, cvv: int):
+  def get_card(self, number: int):
     pass
 
   @abstractmethod
