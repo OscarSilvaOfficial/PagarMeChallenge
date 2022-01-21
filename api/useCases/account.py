@@ -19,8 +19,8 @@ class AccountUseCase(AccountUseCaseInterface):
   def get_accounts(self):
     return self._account_repository.get_accounts()
   
-  def get_account(self, document: int):
-    return self._account_repository.get_account(transaction_id=document)
+  def get_account(self, document: str):
+    return self._account_repository.get_account(document=document)
 
   def create_account(self, document: str, user_name: str, balance: float):
     
@@ -29,5 +29,12 @@ class AccountUseCase(AccountUseCaseInterface):
     
     account = Account(balance=balance, document=document, user_name=user_name)
     return self._account_repository.create_account(accounts=account.to_dict())
+  
+  def update_account(self, document: str, user_name: str):
+  
+    if not self.get_account(document=document):
+      raise Exception('Account not found')
+    
+    return self._account_repository.update_account(document=document, update_values={'user_name': user_name})
 
       

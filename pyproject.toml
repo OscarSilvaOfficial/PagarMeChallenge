@@ -6,11 +6,10 @@ authors = ["OscarSilvaOfficial <oscarkaka222@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-fast-sql-manager="^1.2.3"
 fastapi = "^0.71.0"
 uvicorn = "^0.17.0"
-fast-nosql-manager = "^0.2.2"
 pymongo = {extras = ["srv"], version = "^4.0.1"}
+fast-nosql-manager = "0.3.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"

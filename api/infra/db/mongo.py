@@ -21,5 +21,11 @@ class Mongo(NoSQLInterface):
     except Exception:
       return Exception('Erro ao criar')
   
+  def update(self, collection_name, where, new_values):
+    try:
+      return self._db.update_document(collection_name=collection_name, where=where, new_values=new_values)
+    except Exception:
+      return Exception('Erro ao atualizar')
+    
   def delete(self, collection_name, where):
     return self._db.delete_document(collection_name=collection_name, where=where)

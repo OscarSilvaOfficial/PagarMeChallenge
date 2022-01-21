@@ -12,5 +12,9 @@ class NoSQLInterface(ABC):
     pass
   
   @abstractmethod
+  def update(self, collection_name, where, new_values):
+    pass
+  
+  @abstractmethod
   def delete(self, collection_name, where):
     pass
