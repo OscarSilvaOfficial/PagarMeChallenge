@@ -37,7 +37,6 @@ class DebitTransactionsUseCase(DebitTransactionsUseCaseInterface):
     
     from_account.cashout(value)
     to_account.cashin(value)
-    
 
     transaction = DebitTransactions(
       description='Debit transaction',
@@ -45,8 +44,6 @@ class DebitTransactionsUseCase(DebitTransactionsUseCaseInterface):
       to_account=to_account.document,
       value=value
     )
-    
-    print(transaction.to_dict())
-        
+            
     return self._transaction_repository.create_transaction(transaction=transaction.to_dict())
       

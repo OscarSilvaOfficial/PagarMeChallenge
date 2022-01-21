@@ -17,7 +17,7 @@ def transaction_routes(router: HttpApiInterface, db: DatabaseInterface, response
   async def get_all_transactions():
     return transaction_use_case.get_transactions()
   
-  @router.post('/transactions/', status_code=201)
+  @router.post('/transactions/', status_code=201, response_model=TransactionParser)
   async def create_transaction(transaction: TransactionParser, response: response):
     return transaction_use_case.create_transaction(
       from_document=transaction.from_document,

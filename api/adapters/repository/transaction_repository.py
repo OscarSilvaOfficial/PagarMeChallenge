@@ -14,4 +14,8 @@ class TransactionsRepository(TransactionsRepositoryInterface):
     return self.db.all(collection_name='transactions', where={ 'id': id })
     
   def create_transaction(self, transaction):
-    return self.db.create(collection_name='transactions', documents=transaction)
+    try:
+      self.db.create(collection_name='transactions', documents=transaction)
+      return transaction
+    except Exception:
+      return Exception('Erro ao criar transação')

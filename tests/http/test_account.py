@@ -12,7 +12,7 @@ def test_get_accounts():
   
 def test_create_account():
   account = {
-    "document": "12345678903",
+    "document": "12345678910",
     "user_name": "teste",
     "balance": 1000.0
   }

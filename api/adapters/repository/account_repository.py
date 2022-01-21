@@ -14,5 +14,9 @@ class AccountRepository(AccountRepositoryInterface):
     result = self.db.all(collection_name='accounts', where={'document': document})
     return None if not result else result[0]
 
-  def create_account(self, accounts: dict or list[dict]):
-    return self.db.create(documents=accounts, collection_name='accounts')
+  def create_account(self, accounts):
+    try:
+      self.db.create(documents=accounts, collection_name='accounts')
+      return "Conta cliente criada com sucesso"
+    except Exception:
+      return Exception('Erro ao criar conta')

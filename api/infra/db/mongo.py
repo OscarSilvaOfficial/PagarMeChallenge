@@ -19,8 +19,7 @@ class Mongo(NoSQLInterface):
     try:
       self._db.create_document(collection_name=collection_name, documents=documents)
     except Exception:
-      return Exception('Erro ao criar documento')
-    return {'message': 'Documento criado com sucesso'}
+      return Exception('Erro ao criar')
   
   def delete(self, collection_name, where):
     return self._db.delete_document(collection_name=collection_name, where=where)
