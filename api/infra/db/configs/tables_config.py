@@ -9,17 +9,6 @@ tables = [
     }
   },
   {
-    'name': 'DebitCard',
-    'columns': {
-      'id': 'INTEGER PRIMARY KEY AUTOINCREMENT',
-      'number': 'INTEGER',
-      'client_name': 'TEXT',
-      'expire_date': 'TEXT',
-      'cvv': 'INTEGER',
-      'type': 'TEXT'
-    }
-  },
-  {
     'name': 'Transactions',
     'columns': {
       'id': 'INTEGER PRIMARY KEY AUTOINCREMENT',
@@ -32,4 +21,4 @@ tables = [
   }
 ]
 
-collections = ['transactions', 'accounts', 'debit_cards']
+collections = ['transactions', 'accounts']
