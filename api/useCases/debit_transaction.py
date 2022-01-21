@@ -1,9 +1,7 @@
 from api.adapters.repository.interfaces.account_repository_interface import AccountRepositoryInterface
-from api.adapters.repository.interfaces.card_repository_interface import CardRepositoryInterface
 from api.adapters.repository.interfaces.transaction_repository_interface import TransactionsRepositoryInterface
-from api.entities.transaction.transaction import Transactions
+from api.entities.transaction.dabit_transaction import DebitTransactions
 from api.useCases.interfaces.debit_transaction_use_case import DebitTransactionsUseCaseInterface
-from api.entities.card.debit_card import DebitCard
 from api.entities.account.account import Account
 
 
@@ -13,11 +11,13 @@ class DebitTransactionsUseCase(DebitTransactionsUseCaseInterface):
     self, 
     transaction_repository: TransactionsRepositoryInterface, 
     account_repository: AccountRepositoryInterface,
-    debit_card_repository: CardRepositoryInterface
   ):
     self._transaction_repository = transaction_repository
     self._account_repository = account_repository
-    self._debit_card_repository = debit_card_repository
+    
+  def _replace_id_key(self, entity: dict):
+    entity['id'] = entity['_id']
+    entity.pop('_id')
   
   def get_transactions(self):
     return self._transaction_repository.get_transactions()
@@ -25,22 +25,28 @@ class DebitTransactionsUseCase(DebitTransactionsUseCaseInterface):
   def get_transaction(self, transaction_id: int):
     return self._transaction_repository.get_transaction(transaction_id=transaction_id)
 
-  def create_transaction(self, value: float, from_document: str, to_document: str, card_number: int, cvv: int):
+  def create_transaction(self, value: float, from_document: str, to_document: str):
     from_account_data = self._account_repository.get_account(document=from_document)
     to_account_data = self._account_repository.get_account(document=to_document)
-    card_data = self._debit_card_repository.get_card(number=card_number)
+    
+    for account_data in [from_account_data, to_account_data]:
+      self._replace_id_key(account_data)
         
-    from_account = Account(**from_account_data).id
-    to_account = Account(**to_account_data).id
-    card = DebitCard(**card_data).id
+    from_account = Account(**from_account_data)
+    to_account = Account(**to_account_data)
+    
+    from_account.cashout(value)
+    to_account.cashin(value)
+    
 
-    transaction = Transactions(
+    transaction = DebitTransactions(
       description='Debit transaction',
-      card=card,
-      from_account=from_account,
-      to_account=to_account,
+      from_account=from_account.document,
+      to_account=to_account.document,
       value=value
     )
+    
+    print(transaction.to_dict())
         
-    return self._transaction_repository.create_transaction(transaction=transaction)
+    return self._transaction_repository.create_transaction(transaction=transaction.to_dict())
       

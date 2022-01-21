@@ -1,23 +1,16 @@
-from api.entities.interfaces.account_interface import AccountInterface
-from api.entities.interfaces.card_interface import CardInterface
-from api.entities.interfaces.credit_card_interface import CreditCardInterface
-
-
 class Transactions:
   
   def __init__(
     self, 
     value: float,
     description: str,
-    from_account: AccountInterface, 
-    to_account: AccountInterface, 
-    card: CardInterface
+    from_document: str, 
+    to_document: str, 
   ):
     self._value = value
     self._description = description
-    self._from_account = from_account
-    self._to_account = to_account
-    self._card = card
+    self._from_document = from_document
+    self._to_document = to_document
     
   @property
   def value(self):
@@ -28,18 +21,18 @@ class Transactions:
     return self._description
   
   @property
-  def from_account(self):
-    return self._from_account
+  def from_document(self):
+    return self._from_document
   
   @property
-  def to_account(self):
-    return self._to_account
+  def to_document(self):
+    return self._to_document
   
-  @property
-  def card(self):
-    return self._card
+  def to_dict(self):
+    return {
+      'value': self._value,
+      'description': self._description,
+      'from_document': self._from_document,
+      'to_document': self._to_document
+    }
     
-  def validate(self):
-    if self._card.type is not 'debit_card':
-      raise Exception('Invalid card type')
-    self._card.validate()

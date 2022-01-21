@@ -1,17 +1,17 @@
 from api.adapters.repository.interfaces.transaction_repository_interface import TransactionsRepositoryInterface
-from api.infra.db.interfaces.sql_interface import DatabaseInterface
+from api.infra.db.interfaces.nosql_interface import NoSQLInterface
 
 
 class TransactionsRepository(TransactionsRepositoryInterface):
   
-  def __init__(self, db: DatabaseInterface) -> None:
-      super().__init__(db=db)
+  def __init__(self, db: NoSQLInterface) -> None:
+    self.db = db
   
   def get_transactions(self):
-    return self.db.all()
+    return self.db.all(collection_name='transactions')
     
   def get_transaction(self, id: int):
-    return self.db.get(where={ 'id': id })
+    return self.db.all(collection_name='transactions', where={ 'id': id })
     
   def create_transaction(self, transaction):
-    return self.db.create(transaction)
+    return self.db.create(collection_name='transactions', documents=transaction)
