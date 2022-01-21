@@ -1,4 +1,3 @@
-from api.useCases.account import AccountUseCase
 from api.infra.db.interfaces.sql_interface import DatabaseInterface
 from api.infra.http.interfaces.http_api_interface import HttpApiInterface
 
