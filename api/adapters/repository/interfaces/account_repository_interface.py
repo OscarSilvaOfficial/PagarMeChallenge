@@ -17,5 +17,5 @@ class AccountRepositoryInterface(ABC):
     pass
 
   @abstractmethod
-  def update_account(self, document: int, new_values: dict):
+  def update_account(self, document: int, update_values: dict):
     pass
