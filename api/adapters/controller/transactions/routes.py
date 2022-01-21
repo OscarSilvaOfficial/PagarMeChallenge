@@ -18,13 +18,9 @@ def transaction_routes(router: HttpApiInterface, db: DatabaseInterface, response
     return transaction_use_case.get_transactions()
   
   @router.post('/transactions/', status_code=201)
-  async def create_transaction(transaction: TransactionParser, response=response):
-    try:
-      return transaction_use_case.create_transaction(
-        from_document=transaction.from_document,
-        to_document=transaction.to_document,
-        value=transaction.value
-      )
-    except Exception as e:
-      response.status_code = 409
-      return {'message': str(e)}
+  async def create_transaction(transaction: TransactionParser, response: response):
+    return transaction_use_case.create_transaction(
+      from_document=transaction.from_document,
+      to_document=transaction.to_document,
+      value=transaction.value
+    )
