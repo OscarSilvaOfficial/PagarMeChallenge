@@ -18,6 +18,12 @@ class DebitTransactionsUseCase(DebitTransactionsUseCaseInterface):
   def _replace_id_key(self, entity: dict):
     entity['id'] = entity['_id']
     entity.pop('_id')
+    
+  def _do_transfer(self, from_account, to_account, value):
+    from_account.cashout(value)
+    to_account.cashin(value)
+    self._account_repository.update_account(document=from_account.document, update_values=from_account.to_dict())
+    self._account_repository.update_account(document=to_account.document, update_values=to_account.to_dict())
   
   def get_transactions(self):
     return self._transaction_repository.get_transactions()
@@ -35,8 +41,7 @@ class DebitTransactionsUseCase(DebitTransactionsUseCaseInterface):
     from_account = Account(**from_account_data)
     to_account = Account(**to_account_data)
     
-    from_account.cashout(value)
-    to_account.cashin(value)
+    self._do_transfer(from_account, to_account, value)
 
     transaction = DebitTransactions(
       description='Debit transaction',
