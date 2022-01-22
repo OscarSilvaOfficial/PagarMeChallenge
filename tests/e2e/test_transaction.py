@@ -6,8 +6,8 @@ client = TestClient(app)
 
 def test_create_transaction():
   transaction = {
-    'from_document': "12345678904",
-    'to_document': "12345678903",
+    'from_document': "12345678903",
+    'to_document': "12345678904",
     'value': 100.0
   }
 
